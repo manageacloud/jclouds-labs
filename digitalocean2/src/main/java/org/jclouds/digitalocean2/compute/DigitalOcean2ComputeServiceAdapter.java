@@ -118,7 +118,7 @@ public class DigitalOcean2ComputeServiceAdapter implements ComputeServiceAdapter
 
       // We have to actively wait until the droplet has been provisioned until
       // we can build the entire Droplet object we want to return
-      nodeRunningPredicate.apply(getOnlyElement(dropletCreated.links().actions()).id());
+      nodeRunningPredicate.apply(dropletCreated.droplet().id());
       Droplet droplet = api.dropletApi().get(dropletCreated.droplet().id());
 
       LoginCredentials defaultCredentials = LoginCredentials.builder().user("root")
